@@ -29,6 +29,7 @@ flowchart LR
 - 전체 좌석 목록 조회
 - 좌석 예약
 - 예약 취소
+- 여러 좌석 동시 예약 및 취소 (번호 범위 입력 지원)
 - 특정 좌석 상태 확인
 - 예약 통계 조회
 - 인메모리 기반 좌석 관리
@@ -48,6 +49,8 @@ seat> list
 seat> reserve 3 Alex
 seat> status 3
 seat> cancel 3 Alex
+seat> reserve-many 1-3,5 Alex
+seat> cancel-many 1-3 Alex
 seat> stats
 ```
 
@@ -58,6 +61,8 @@ seat> stats
 | `list`                     | 전체 좌석 목록을 조회합니다.        |
 | `reserve <seat_id> <name>` | 특정 좌석을 예약합니다.             |
 | `cancel <seat_id> [name]`  | 특정 좌석의 예약을 취소합니다.      |
+| `reserve-many <seat_numbers> <name>` | 여러 좌석을 한 번에 예약합니다. 좌석 번호는 공백 없이 쉼표로 구분하며 `1-3`처럼 범위로도 적을 수 있습니다. 예: `1,2,3` 또는 `1-3,5` |
+| `cancel-many <seat_numbers> [name]` | 여러 좌석의 예약을 한 번에 취소합니다. 좌석 번호는 공백 없이 쉼표로 구분하며 범위(`1-3`)도 가능합니다. |
 | `status <seat_id>`         | 특정 좌석의 예약 상태를 확인합니다. |
 | `stats`                    | 전체 좌석 예약 통계를 확인합니다.   |
 | `help`                     | 사용 가능한 명령어를 출력합니다.    |
